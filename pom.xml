@@ -17,13 +17,17 @@
           <id>com.kineticdata</id>
           <url>http://utilities.kineticdata.com/nexus/content/repositories/releases/</url>
         </repository>
+        <repository>
+          <id>thirdparty</id>
+          <url>http://utilities.kineticdata.com/nexus/content/repositories/thirdparty/</url>
+        </repository>
     </repositories>
 
     <dependencies>
         <dependency>
             <groupId>com.kineticdata.bridges.adapter</groupId>
             <artifactId>kinetic-bridgehub-adapter</artifactId>
-            <version>1.0.3</version>
+            <version>1.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -36,9 +40,9 @@
             <version>2.6</version>
         </dependency>
         <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>sqljdbc4</artifactId>
-            <version>4.0</version>
+            <groupId>com.microsoft.sqlserver.jdbc</groupId>
+            <artifactId>sqlserver-jdbc</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.kineticdata.bridgehub.adapter</groupId>
@@ -105,29 +109,6 @@
                         </manifestEntries>
                     </archive>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-install-plugin</artifactId>
-                <version>2.5.2</version>
-                <executions>
-                    <execution>
-                        <id>install-mssql-driver</id>
-                        <phase>clean</phase>
-                        <configuration>
-                            <file>${basedir}/lib/sqljdbc4.jar</file>
-                            <repositoryLayout>default</repositoryLayout>
-                            <groupId>com.microsoft.sqlserver</groupId>
-                            <artifactId>sqljdbc4</artifactId>
-                            <version>4.0</version>
-                            <packaging>jar</packaging>
-                            <generatePom>true</generatePom>
-                        </configuration>
-                        <goals>
-                            <goal>install-file</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
         <finalName>${project.artifactId}-${project.version}</finalName>
